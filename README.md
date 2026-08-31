@@ -125,14 +125,7 @@
       display: none;
     }
 
-    .session-block.active {
-      display: block;
-    }
-
-    .section-title {
-      font-size: 20px;
-      color: var(--primary);
-      margin-bottom: 15px;
+    .session-block.acti
       padding-bottom: 5px;
       border-bottom: 1px solid #ddd;
     }
