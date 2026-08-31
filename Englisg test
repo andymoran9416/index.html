@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen Completo de Inglés - Nivel B1/B2</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --success: #27ae60;
+      --warning: #f39c12;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid #eef2f5;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .level-badge {
+      display: inline-block;
+      background: #e8f4f8;
+      color: var(--secondary);
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    /* Security Notice */
+    .security-notice {
+      background-color: #fdf3d8;
+      border-left: 5px solid var(--warning);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #7d5a29;
+    }
+
+    /* Progress & Session Tabs */
+    .session-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      gap: 5px;
+    }
+
+    .session-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 5px;
+      background: #eef2f5;
+      color: #7f8c8d;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .session-tab.active {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .session-tab.completed {
+      background: var(--success);
+      color: white;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #eef2f5;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 20%;
+      background: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    /* Form Content */
+    .session-block {
+      display: none;
+    }
+
+    .session-block.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .question {
+      background: #fdfdfd;
+      border: 1px solid #eef2f5;
+      padding: 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .question p {
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+
+    .options label {
+      display: block;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .options label:hover {
+      background: #edf2f7;
+    }
+
+    .options input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background-color: white;
+      font-size: 14px;
+    }
+
+    .match-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    @media (min-width: 600px) {
+      .match-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .match-row span {
+        width: 55%;
+      }
+      .match-row select {
+        width: 40%;
+      }
+    }
+
+    /* Buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 15px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-prev {
+      background-color: #95a5a6;
+      color: white;
+    }
+
+    .btn-prev:hover {
+      background-color: #7f8c8d;
+    }
+
+    .btn-next {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .btn-next:hover {
+      background-color: #2980b9;
+    }
+
+    .btn-submit {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-submit:hover {
+      background-color: #219150;
+    }
+
+    /* Results */
+    #results {
+      display: none;
+      text-align: center;
+      padding: 25px;
+      background: #f8fafc;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .score-display {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    /* Lock Overlay Screen */
+    #lockOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(44, 62, 80, 0.96);
+      z-index: 9999;
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    #lockOverlay h2 {
+      font-size: 36px;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    #lockOverlay p {
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 25px;
+    }
+
+    #unlockBtn {
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 28px;
+      font-size: 18px;
+    }
+
+    #unlockBtn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Lock Overlay -->
+  <div id="lockOverlay">
+    <h2>⚠️ Examen Bloqueado</h2>
+    <p>Has salido de la ventana o cambiado de pestaña durante la sesión de prueba. Por motivos de seguridad y control anti-fraude, la sesión ha sido pausada y registrada.</p>
+    <p><strong>Intentos de salida detectados: <span id="violationCount">0</span></strong></p>
+    <button id="unlockBtn" onclick="resumeExam()">Reanudar Examen</button>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Examen General de Inglés</h1>
+      <span class="level-badge">Nivel B1 / B2 (Intermedio Avanzado)</span>
+    </header>
+
+    <div class="security-notice">
+      🔒 <strong>Atención:</strong> Este examen cuenta con monitorización en tiempo real. Si cambias de pestaña, minimizas o sales de la navegador, el examen se bloqueará automáticamente.
+    </div>
+
+    <!-- Session Navigation Tabs -->
+    <div class="session-indicator">
+      <div class="session-tab active" id="tab-1">Sesión 1</div>
+      <div class="session-tab" id="tab-2">Sesión 2</div>
+      <div class="session-tab" id="tab-3">Sesión 3</div>
+      <div class="session-tab" id="tab-4">Sesión 4</div>
+      <div class="session-tab" id="tab-5">Sesión 5</div>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="quizForm">
+
+      <!-- SESIÓN 1 -->
+      <div class="session-block active" id="session-1">
+        <h2 class="section-title">Sesión 1: Gramática Estructural y Tiempos Verbales Avanzados</h2>
+
+        <div class="question">
+          <p>1. By the time the conference starts tomorrow morning, the key speakers _____ their presentations.</p>
+          <div class="options">
+            <label><input type="radio" name="q1" value="A"> A) will complete</label>
+            <label><input type="radio" name="q1" value="B"> B) will have completed</label>
+            <label><input type="radio" name="q1" value="C"> C) are completing</label>
+            <label><input type="radio" name="q1" value="D"> D) have completed</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>2. If I _____ more attention during the briefing, I wouldn't be having so much trouble with this project now.</p>
+          <div class="options">
+            <label><input type="radio" name="q2" value="A"> A) had paid</label>
+            <label><input type="radio" name="q2" value="B"> B) pay</label>
+            <label><input type="radio" name="q2" value="C"> C) would pay</label>
+            <label><input type="radio" name="q2" value="D"> D) have paid</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>3. She was exhausted because she _____ on her research paper all night long.</p>
+          <div class="options">
+            <label><input type="radio" name="q3" value="A"> A) has been working</label>
+            <label><input type="radio" name="q3" value="B"> B) was worked</label>
+            <label><input type="radio" name="q3" value="C"> C) had been working</label>
+            <label><input type="radio" name="q3" value="D"> D) works</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>4. The new government regulations _____ into effect early next month.</p>
+          <div class="options">
+            <label><input type="radio" name="q4" value="A"> A) are going to come</label>
+            <label><input type="radio" name="q4" value="B"> B) came</label>
+            <label><input type="radio" name="q4" value="C"> C) had come</label>
+            <label><input type="radio" name="q4" value="D"> D) was coming</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>5. Rarely _____ such an extraordinary performance by a young musician.</p>
+          <div class="options">
+            <label><input type="radio" name="q5" value="A"> A) I have witnessed</label>
+            <label><input type="radio" name="q5" value="B"> B) have I witnessed</label>
+            <label><input type="radio" name="q5" value="C"> C) I witnessed</label>
+            <label><input type="radio" name="q5" value="D"> D) witnessed I</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SESIÓN 2 -->
+      <div class="session-block" id="session-2">
+        <h2 class="section-title">Sesión 2: Reorganización Oracional y Reescritura Directa</h2>
+        <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Escribe la oración ordenada correctamente, manteniendo puntuación y mayúsculas adecuadas:</p>
+
+        <div class="question">
+          <p>6. Ordena: <em>hardly / reached / when / the storm / We / had / the shelter / started.</em></p>
+          <input type="text" id="q6" placeholder="Escribe la oración completa aquí...">
+        </div>
+
+        <div class="question">
+          <p>7. Ordena: <em>me / Could / where / you / is / nearest / located / tell / bank / the / ?</em></p>
+          <input type="text" id="q7" placeholder="Escribe la pregunta indirecta completa aquí...">
+        </div>
+
+        <div class="question">
+          <p>8. Ordena: <em>supposed / expected / turned out / the results / Were / to be / better than / ?</em></p>
+          <input type="text" id="q8" placeholder="Escribe la pregunta completa aquí...">
+        </div>
+
+        <div class="question">
+          <p>9. Ordena: <em>spite / raining / of / heavy / enjoyed / the / they / outdoor concert. / In</em></p>
+          <input type="text" id="q9" placeholder="Escribe la oración completa aquí...">
+        </div>
+
+        <div class="question">
+          <p>10. Ordena: <em>sooner / left / had / the building / No / than / sounded / the alarm. / we</em></p>
+          <input type="text" id="q10" placeholder="Escribe la oración completa aquí...">
+        </div>
+      </div>
+
+      <!-- SESIÓN 3 -->
+      <div class="session-block" id="session-3">
+        <h2 class="section-title">Sesión 3: Relación de Contextos y Phrasal Verbs (B1/B2)</h2>
+        <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Selecciona la opción que complete el significado contextual de cada frase:</p>
+
+        <div class="match-row question">
+          <span>11. Due to sudden financial issues, the board decided to...</span>
+          <select id="q11">
+            <option value="">-- Selecciona la opción --</option>
+            <option value="A">call off the international expansion project.</option>
+            <option value="B">look up to the new administrative assistant.</option>
+            <option value="C">run out of the upcoming schedule.</option>
+          </select>
+        </div>
+
+        <div class="match-row question">
+          <span>12. The manager urged everyone to keep working hard to...</span>
+          <select id="q12">
+            <option value="">-- Selecciona la opción --</option>
+            <option value="A">catch up with the tight quarterly deadline.</option>
+            <option value="B">give in to the easy solution.</option>
+            <option value="C">pass away before the contract ends.</option>
+          </select>
+        </div>
+
+        <div class="match-row question">
+          <span>13. After reviewing all the evidence, the detective...</span>
+          <select id="q13">
+            <option value="">-- Selecciona la opción --</option>
+            <option value="A">came up with a plausible theory for the incident.</option>
+            <option value="B">turned down the main lights of the room.</option>
+            <option value="C">put up with the missing files.</option>
+          </select>
+        </div>
+
+        <div class="match-row question">
+          <span>14. We had to postpone our departure because the plane...</span>
+          <select id="q14">
+            <option value="">-- Selecciona la opción --</option>
+            <option value="A">broke down on the tarmac due to engine failure.</option>
+            <option value="B">took off despite the heavy snowfall.</option>
+            <option value="C">checked out early from the airport terminal.</option>
+          </select>
+        </div>
+
+        <div class="match-row question">
+          <span>15. Although she was intimidated at first, she gradually...</span>
+          <select id="q15">
+            <option value="">-- Selecciona la opción --</option>
+            <option value="A">got along very well with her new team members.</option>
+            <option value="B">carried on without any communication.</option>
+            <option value="C">brought up to the local station.</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SESIÓN 4 -->
+      <div class="session-block" id="session-4">
+        <h2 class="section-title">Sesión 4: Análisis de Lectura y Secuencia Lógica</h2>
+        <div style="background: #eef2f5; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-style: italic; font-size: 14.5px;">
+          "The rapid shift toward remote work has transformed corporate culture worldwide. While employees appreciate the flexibility, managers often struggle to maintain team cohesion and monitor productivity without micromanaging."
+        </div>
+
+        <div class="question">
+          <p>16. According to the excerpt above, what is a main challenge for managers in remote settings?</p>
+          <div class="options">
+            <label><input type="radio" name="q16" value="A"> A) Providing flexible work schedules.</label>
+            <label><input type="radio" name="q16" value="B"> B) Maintaining team cohesion without micromanaging.</label>
+            <label><input type="radio" name="q16" value="C"> C) Reducing overall corporate expenditures.</label>
+            <label><input type="radio" name="q16" value="D"> D) Hiring overseas workers effectively.</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>17. What does the word <strong>"cohesion"</strong> most nearly mean in this context?</p>
+          <div class="options">
+            <label><input type="radio" name="q17" value="A"> A) Conflict</label>
+            <label><input type="radio" name="q17" value="B"> B) Unity</label>
+            <label><input type="radio" name="q17" value="C"> C) Division</label>
+            <label><input type="radio" name="q17" value="D"> D) Competition</label>
+          </div>
+        </div>
+
+        <p style="margin: 20px 0 10px 0; font-weight: bold;">Asigna el número de orden (1 a 3) a las siguientes oraciones para formar una historia coherente:</p>
+
+        <div class="question">
+          <p>18. Secuencia - Frase A:
+            <select id="q18_1" style="width: auto; display: inline-block; margin-right: 10px;">
+              <option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            </select>
+            Furthermore, the company decided to invest heavily in modern communication platforms.
+          </p>
+          <p>19. Secuencia - Frase B:
+            <select id="q18_2" style="width: auto; display: inline-block; margin-right: 10px;">
+              <option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            </select>
+            Initial reports indicated that employee satisfaction had dropped significantly.
+          </p>
+          <p>20. Secuencia - Frase C:
+            <select id="q18_3" style="width: auto; display: inline-block; margin-right: 10px;">
+              <option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            </select>
+            As a direct consequence, internal collaboration improved substantially within months.
+          </p>
+        </div>
+      </div>
+
+      <!-- SESIÓN 5 -->
+      <div class="session-block" id="session-5">
+        <h2 class="section-title">Sesión 5: Voz Pasiva, Discurso Indirecto y Conectores Avanzados</h2>
+
+        <div class="question">
+          <p>21. Passive Voice: "The engineers are currently testing the new software update." → The new software update _____ by the engineers.</p>
+          <div class="options">
+            <label><input type="radio" name="q21" value="A"> A) is testing</label>
+            <label><input type="radio" name="q21" value="B"> B) is being tested</label>
+            <label><input type="radio" name="q21" value="C"> C) was tested</label>
+            <label><input type="radio" name="q21" value="D"> D) has tested</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>22. Reported Speech: "I will call you as soon as I land," Mark told me. → Mark told me that he _____ me as soon as he landed.</p>
+          <div class="options">
+            <label><input type="radio" name="q22" value="A"> A) will call</label>
+            <label><input type="radio" name="q22" value="B"> B) would call</label>
+            <label><input type="radio" name="q22" value="C"> C) calls</label>
+            <label><input type="radio" name="q22" value="D"> D) called</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>23. The project was completed on schedule _____ the severe shortage of raw materials.</p>
+          <div class="options">
+            <label><input type="radio" name="q23" value="A"> A) despite</label>
+            <label><input type="radio" name="q23" value="B"> B) although</label>
+            <label><input type="radio" name="q23" value="C"> C) even though</label>
+            <label><input type="radio" name="q23" value="D"> D) in order to</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>24. You had better leave now, _____ you will miss the last connecting train.</p>
+          <div class="options">
+            <label><input type="radio" name="q24" value="A"> A) otherwise</label>
+            <label><input type="radio" name="q24" value="B"> B) unless</label>
+            <label><input type="radio" name="q24" value="C"> C) provided that</label>
+            <label><input type="radio" name="q24" value="D"> D) as long as</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <p>25. The CEO suggested _____ a special task force to analyze market trends.</p>
+          <div class="options">
+            <label><input type="radio" name="q25" value="A"> A) to create</label>
+            <label><input type="radio" name="q25" value="B"> B) creating</label>
+            <label><input type="radio" name="q25" value="C"> C) create</label>
+            <label><input type="radio" name="q25" value="D"> D) created</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="nav-buttons">
+        <button type="button" class="btn-prev" id="prevBtn" onclick="changeSession(-1)" style="display: none;">Anterior</button>
+        <button type="button" class="btn-next" id="nextBtn" onclick="changeSession(1)">Siguiente Sesión</button>
+        <button type="button" class="btn-submit" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Finalizar Examen</button>
+      </div>
+
+    </form>
+
+    <div id="results"></div>
+  </div>
+
+  <script>
+    let currentSession = 1;
+    const totalSessions = 5;
+    let lockViolations = 0;
+    let isLocked = false;
+
+    // Load saved answers from LocalStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      loadProgress();
+      updateNavigation();
+      initAntiCheat();
+    });
+
+    // Session Switcher
+    function changeSession(step) {
+      saveProgress();
+
+      // Hide current session
+      document.getElementById(`session-${currentSession}`).classList.remove('active');
+      document.getElementById(`tab-${currentSession}`).classList.remove('active');
+      document.getElementById(`tab-${currentSession}`).classList.add('completed');
+
+      currentSession += step;
+
+      // Show new session
+      document.getElementById(`session-${currentSession}`).classList.add('active');
+      document.getElementById(`tab-${currentSession}`).classList.add('active');
+
+      updateNavigation();
+    }
+
+    function updateNavigation() {
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const progressBar = document.getElementById('progressBar');
+
+      // Update progress bar
+      progressBar.style.width = `${(currentSession / totalSessions) * 100}%`;
+
+      // Button states
+      if (currentSession === 1) {
+        prevBtn.style.display = 'none';
+      } else {
+        prevBtn.style.display = 'block';
+      }
+
+      if (currentSession === totalSessions) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'block';
+      } else {
+        nextBtn.style.display = 'block';
+        submitBtn.style.display = 'none';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Anti-Cheat & Screen Locking System
+    function initAntiCheat() {
+      // Visibility change (tab switching)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          triggerLock();
+        }
+      });
+
+      // Blur event (window focus lost)
+      window.addEventListener('blur', () => {
+        triggerLock();
+      });
+    }
+
+    function triggerLock() {
+      if (isLocked) return;
+      isLocked = true;
+      lockViolations++;
+
+      document.getElementById('violationCount').innerText = lockViolations;
+      document.getElementById('lockOverlay').style.display = 'flex';
+      saveProgress();
+    }
+
+    function resumeExam() {
+      isLocked = false;
+      document.getElementById('lockOverlay').style.display = 'none';
+    }
+
+    // Save and Load State
+    function saveProgress() {
+      const formData = new FormData(document.getElementById('quizForm'));
+      const data = {};
+      for (let [key, val] of formData.entries()) {
+        data[key] = val;
+      }
+
+      // Add text and select inputs
+      const textInputs = document.querySelectorAll('input[type="text"], select');
+      textInputs.forEach(input => {
+        if (input.id) data[input.id] = input.value;
+      });
+
+      localStorage.setItem('english_exam_data', JSON.stringify(data));
+      localStorage.setItem('english_exam_session', currentSession);
+    }
+
+    function loadProgress() {
+      const savedData = localStorage.getItem('english_exam_data');
+      if (!savedData) return;
+
+      const data = JSON.parse(savedData);
+
+      // Restore radio buttons
+      Object.keys(data).forEach(name => {
+        const radio = document.querySelector(`input[name="${name}"][value="${data[name]}"]`);
+        if (radio) radio.checked = true;
+
+        const input = document.getElementById(name);
+        if (input) input.value = data[name];
+      });
+    }
+
+    // Evaluation Logic
+    function evaluateQuiz() {
+      saveProgress();
+      let score = 0;
+      const totalQuestions = 25;
+
+      // Section 1: Multiple Choice
+      if (getRadioValue('q1') === 'B') score++;
+      if (getRadioValue('q2') === 'A') score++;
+      if (getRadioValue('q3') === 'C') score++;
+      if (getRadioValue('q4') === 'A') score++;
+      if (getRadioValue('q5') === 'B') score++;
+
+      // Section 2: Sentence Ordering
+      const q6 = cleanText(document.getElementById('q6').value);
+      if (q6 === 'we had hardly reached the shelter when the storm started.') score++;
+
+      const q7 = cleanText(document.getElementById('q7').value);
+      if (q7 === 'could you tell me where the nearest bank is located?') score++;
+
+      const q8 = cleanText(document.getElementById('q8').value);
+      if (q8 === 'were the results expected to be better than supposed?') score++;
+
+      const q9 = cleanText(document.getElementById('q9').value);
+      if (q9 === 'in spite of heavy raining they enjoyed the outdoor concert.' || q9 === 'in spite of heavy rain they enjoyed the outdoor concert.') score++;
+
+      const q10 = cleanText(document.getElementById('q10').value);
+      if (q10 === 'no sooner had we left the building than the alarm sounded.') score++;
+
+      // Section 3: Phrasal Verbs
+      if (document.getElementById('q11').value === 'A') score++;
+      if (document.getElementById('q12').value === 'A') score++;
+      if (document.getElementById('q13').value === 'A') score++;
+      if (document.getElementById('q14').value === 'A') score++;
+      if (document.getElementById('q15').value === 'A') score++;
+
+      // Section 4: Reading & Logic
+      if (getRadioValue('q16') === 'B') score++;
+      if (getRadioValue('q17') === 'B') score++;
+
+      const s1 = document.getElementById('q18_1').value;
+      const s2 = document.getElementById('q18_2').value;
+      const s3 = document.getElementById('q18_3').value;
+      if (s1 === '2' && s2 === '1' && s3 === '3') score++; // Correct Sequence: B(1), A(2), C(3)
+
+      // Section 5: Passive, Speech & Connectors
+      if (getRadioValue('q21') === 'B') score++;
+      if (getRadioValue('q22') === 'B') score++;
+      if (getRadioValue('q23') === 'A') score++;
+      if (getRadioValue('q24') === 'A') score++;
+      if (getRadioValue('q25') === 'B') score++;
+
+      // Display Results
+      const percentage = ((score / totalQuestions) * 100).toFixed(1);
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.style.display = 'block';
+
+      let statusColor = percentage >= 70 ? '#27ae60' : '#e74c3c';
+      let message = percentage >= 70
+        ? "¡Felicidades! Has demostrado un dominio sólido del nivel B1/B2."
+        : "Revisa los temas avanzados e inténtalo de nuevo para consolidar tu nivel.";
+
+      resultsDiv.innerHTML = `
+        <h2>Resultado del Examen</h2>
+        <div class="score-display" style="color: ${statusColor};">${score} / ${totalQuestions} (${percentage}%)</div>
+        <p>${message}</p>
+        <p style="font-size: 13px; color: #7f8c8d; margin-top: 10px;">Incidentes de salida de pantalla registrados: ${lockViolations}</p>
+      `;
+
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function getRadioValue(name) {
+      const selected = document.querySelector(`input[name="${name}"]:checked`);
+      return selected ? selected.value : null;
+    }
+
+    function cleanText(text) {
+      return text.trim().toLowerCase().replace(/\s+/g, ' ');
+    }
+  </script>
+</body>
+</html>
+```eof
+
+### Key Features Included:
+1. **Level B1/B2 English Mechanics:** Future Perfect, Mixed Conditionals, Inversion, Indirect Questions, Phrasal Verbs, Reading Comprehension, Passive Continuous, Reported Speech, and Advanced Connectors.
+2. **25 Expanded Questions:** Divided evenly across 5 distinct sessions.
+3. **Session Management:** Step-by-step progress with active session indicators, previous/next controls, and automatic `localStorage` progress saving.
+4. **Anti-Cheat Lock System:** Listens for `visibilitychange` (tab switching) and `blur` events (window focus loss). Automatically locks the exam with an overlay banner and counts the number of violations.
